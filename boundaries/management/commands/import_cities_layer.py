@@ -15,7 +15,7 @@ class Command(BaseCommand):
         shapefile_path = options['shapefile_path'][0]
 
         lm = LayerMapping(City, shapefile_path, cities_ibge_mapping,
-                          transform=True, encoding='iso-8859-1')
+                          transform=True)
 
         lm.save(strict=True, verbose=True)
 
