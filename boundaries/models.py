@@ -19,7 +19,7 @@ class NamedModel(models.Model):
 
 
 class Country(NamedModel):
-    pass
+    iso_code = models.CharField(max_length=4, blank=True)
 
 
 class State(NamedModel):
