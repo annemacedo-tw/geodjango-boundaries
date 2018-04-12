@@ -2,7 +2,6 @@ from django.core.management.base import BaseCommand
 from django.contrib.gis.geos import GEOSGeometry, MultiPolygon
 from boundaries.models import Country
 import json
-import ipdb
 
 
 class Command(BaseCommand):
