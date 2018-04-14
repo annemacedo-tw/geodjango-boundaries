@@ -30,7 +30,8 @@ class State(NamedModel):
 
 class City(NamedModel):
     region = models.CharField(max_length=255, blank=True, null=True)
-    state = models.ForeignKey(State)
+    state = models.ForeignKey(State, blank=True, null=True)
+
 
 
 cities_ibge_mapping = {
@@ -51,4 +52,9 @@ state_ibge_mapping = {
 country_ibge_mapping = {
     'name': 'name',
     'geometry': 'POLYGON',
+}
+
+argentinian_cities_mapping = {
+    'name': 'FNA',
+    'geometry': 'POLYGON'
 }
