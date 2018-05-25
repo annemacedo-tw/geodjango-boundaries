@@ -23,15 +23,17 @@ class Country(NamedModel):
 
 
 class State(NamedModel):
-    acronym = models.CharField(max_length=64)
+    label = models.CharField(max_length=255)
+    acronym = models.CharField(max_length=64, blank=True, null=True)
     region = models.CharField(max_length=255, blank=True, null=True)
     country = models.ForeignKey(Country)
 
 
 class City(NamedModel):
+    label = models.CharField(max_length=255)
     region = models.CharField(max_length=255, blank=True, null=True)
     state = models.ForeignKey(State, blank=True, null=True)
-
+    country = models.ForeignKey(Country)
 
 
 cities_ibge_mapping = {
