@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from django.db.models import Manager as GeoManager
 from django.contrib.gis.db import models
 
 
@@ -7,7 +8,7 @@ class NamedModel(models.Model):
     name = models.CharField(max_length=255)
 
     geometry = models.MultiPolygonField()  # Multipolygon in NAD83
-    objects = models.GeoManager()
+    objects = GeoManager()
 
     class Meta:
         abstract = True
