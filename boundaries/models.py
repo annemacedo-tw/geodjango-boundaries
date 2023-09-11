@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from django.db.models import CASCADE
 from django.db.models import Manager as GeoManager
 from django.contrib.gis.db import models
 
@@ -25,14 +26,14 @@ class State(NamedModel):
     label = models.CharField(max_length=255)
     acronym = models.CharField(max_length=64, blank=True, null=True)
     region = models.CharField(max_length=255, blank=True, null=True)
-    country = models.ForeignKey(Country)
+    country = models.ForeignKey(Country, on_delete=CASCADE)
 
 
 class City(NamedModel):
     label = models.CharField(max_length=255)
     region = models.CharField(max_length=255, blank=True, null=True)
-    state = models.ForeignKey(State, blank=True, null=True)
-    country = models.ForeignKey(Country)
+    state = models.ForeignKey(State, blank=True, null=True, on_delete=CASCADE)
+    country = models.ForeignKey(Country, on_delete=CASCADE)
 
 
 cities_ibge_mapping = {

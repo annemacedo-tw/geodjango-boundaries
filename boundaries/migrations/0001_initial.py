@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models, migrations
+from django.db.models import CASCADE
 import django.contrib.gis.db.models.fields
 
 
@@ -42,7 +43,7 @@ class Migration(migrations.Migration):
                 ('geometry', django.contrib.gis.db.models.fields.MultiPolygonField(srid=4326)),
                 ('acronym', models.CharField(max_length=64)),
                 ('region', models.CharField(null=True, blank=True, max_length=255)),
-                ('country', models.ForeignKey(to='boundaries.Country')),
+                ('country', models.ForeignKey(to='boundaries.Country', on_delete=CASCADE)),
             ],
             options={
                 'abstract': False,
@@ -51,6 +52,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='city',
             name='state',
-            field=models.ForeignKey(to='boundaries.State'),
+            field=models.ForeignKey(to='boundaries.State', on_delete=CASCADE),
         ),
     ]
